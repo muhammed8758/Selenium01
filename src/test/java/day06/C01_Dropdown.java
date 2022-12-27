@@ -15,13 +15,13 @@ import java.time.Duration;
 import java.util.List;
 
 public class C01_Dropdown {
-    WebDriver driver;
+        WebDriver driver;
 
-    @Before  // eger test classi nda birden fazla method olusturulmus ise @before kullanilir
-    public void sutup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        @Before  // eger test classi nda birden fazla method olusturulmus ise @before kullanilir
+        public void sutup() {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("https://testcenter.techproeducation.com/index.php?page=dropdown");
 
