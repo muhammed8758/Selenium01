@@ -47,7 +47,13 @@ public class C02_DropdownResuable {
     @Test
     public void selectFromDropdown() {
 
-        selectFromDropdown(driver.findElement(By.xpath("//select[@id='year']")), "2005");//2005 i secti
+        selectFromDropdown(driver.findElement(By.xpath("//select[@id='year']")), "1987");//2005 i secti
+        selectFromDropdown(driver.findElement(By.id("month")),"May");
+        selectFromDropdown(driver.findElement(By.id("day")),"4");
+        selectFromDropdown(driver.findElement(By.id("state")),"Texas");
+
+
+
     }
 
 

@@ -15,13 +15,13 @@ import java.time.Duration;
 import java.util.List;
 
 public class C01_Dropdown {
-        WebDriver driver;
+    WebDriver driver;
 
-        @Before  // eger test classi nda birden fazla method olusturulmus ise @before kullanilir
-        public void sutup() {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
+    @Before  // eger test classi nda birden fazla method olusturulmus ise @before kullanilir
+    public void sutup() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("https://testcenter.techproeducation.com/index.php?page=dropdown");
 
@@ -62,7 +62,7 @@ public class C01_Dropdown {
         for (WebElement w : tumStateList) {
             System.out.println(w.getText());
         }
-        tumStateList.stream().forEach(t-> System.out.println(t.getText()));
+        tumStateList.stream().forEach(t -> System.out.println(t.getText()));
 
 
     }
@@ -81,29 +81,21 @@ public class C01_Dropdown {
     }
 
     @Test       // kendimin yaptigi
-    public void test2 (){
+    public void test2() {
         WebElement option = driver.findElement(By.xpath("//*[@id='dropdown']"));
         Select optionDropdown = new Select(option);
-       optionDropdown.selectByVisibleText("Option 2");
+        optionDropdown.selectByVisibleText("Option 2");
 
-       WebElement stateselection = driver.findElement(By.xpath("//*[@id='state']"));
-       Select stateSelectDropdown = new Select(stateselection);
-       List<WebElement> eyaletler= stateSelectDropdown.getOptions();
-       for(WebElement w : eyaletler){
-           System.out.println(w.getText());
-       }
-       eyaletler.stream().forEach(t-> System.out.println(t.getText()));
-
-
+        WebElement stateselection = driver.findElement(By.xpath("//*[@id='state']"));
+        Select stateSelectDropdown = new Select(stateselection);
+        List<WebElement> eyaletler = stateSelectDropdown.getOptions();
+        for (WebElement w : eyaletler) {
+            System.out.println(w.getText());
+        }
+        eyaletler.stream().forEach(t -> System.out.println(t.getText()));
 
 
     }
-
-
-
-
-
-
 
 
     @After
