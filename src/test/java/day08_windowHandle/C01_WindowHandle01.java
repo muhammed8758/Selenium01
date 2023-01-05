@@ -21,6 +21,7 @@ public class C01_WindowHandle01 extends TestBase {
         //Sayfadaki textin "Opening a new window" olduğunu doğrulayın.
         String window1Text = driver.findElement(By.xpath("//h3")).getText();
         Assert.assertEquals("Opening a new window", window1Text);
+
         //Sayfa başlığının(title) "The Internet" olduğunu doğrulayın.
         String window1Title = driver.getTitle();
         Assert.assertEquals("The Internet", window1Title);
@@ -31,6 +32,7 @@ public class C01_WindowHandle01 extends TestBase {
 
 
         //BU NOKTADA 2 PENCEREACIK VE IKINCISNE GECIS YAPMAK ICIN
+
         Set<String> allWindowHandless = driver.getWindowHandles();// window1handle ve window2hanle var
         System.out.println("allWindowHandless = " + allWindowHandless);
         for (String w : allWindowHandless) {
@@ -41,6 +43,7 @@ public class C01_WindowHandle01 extends TestBase {
             }
         }
         //  BU NOKTADA DRIVER 2. PENCEREDE
+
         //Acilan yeni pencerenin sayfa başlığının (title) "New Window" oldugunu dogrulayin.
         Assert.assertEquals("New Window", driver.getTitle());
 

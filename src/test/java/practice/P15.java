@@ -72,7 +72,7 @@ public class P15 extends TestBase {
         System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());
         // ilk sekmeyi kapatalım
         driver.close();
-     //   driver.switchTo().window(windowsHandles.get(2));
+     //1   driver.switchTo().window(windowsHandles.get(2));
 
 
     }

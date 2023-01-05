@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
-public class K01 {
+public class K01_Dropdown {
     WebDriver driver;
 
     @Before
