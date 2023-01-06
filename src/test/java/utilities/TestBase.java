@@ -32,6 +32,7 @@ public abstract class TestBase {
 
     @After
     public void tearDown() throws Exception {
+        waitFor(3);
         driver.quit();
     }
     //    MULTIPLE WINDOW:

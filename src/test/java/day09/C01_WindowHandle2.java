@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import utilities.TestBase;
 
+import javax.swing.*;
+
 public class C01_WindowHandle2 extends TestBase {
     @Test
     public void test01() {
@@ -39,6 +41,8 @@ public class C01_WindowHandle2 extends TestBase {
         String actualWindow2Title = driver.getTitle();
         String expectedWindow2Title = "New Window";
         Assert.assertEquals(actualWindow2Title, expectedWindow2Title);
+
+
 
 
 
