@@ -13,6 +13,8 @@ public class P07 extends TestBase {
 //        - Çıkan ekrana istediğiniz çizgi yada şekli çiziniz
 
 
+
+
 //        - Son olarak sayfayı temizleyiniz
     }
 }

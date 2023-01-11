@@ -52,7 +52,7 @@ public class C01_Iframe extends TestBase {
 
 
         // Videoyu calistirdiginizi test ediniz
-        WebElement youtubeYazısı=driver.findElement(By.xpath("//a[@class='ytp-youtube-button ytp-button yt-uix-sessionlink']"));
+        WebElement youtubeYazısı=driver.findElement(By.xpath("//*[.='Massive volcanoes & Flamingo colony - Wild South America - BBC']"));
         Assert.assertTrue(youtubeYazısı.isDisplayed());
 
         // 'Powerful,but easy to misuse' yazısının gorunur oldugunu test ediniz
