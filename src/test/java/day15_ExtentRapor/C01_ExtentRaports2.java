@@ -1,23 +1,22 @@
-package day14_ScreenShot;
+package day15_ExtentRapor;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.devtools.v85.network.model.DataReceived;
 import utilities.TestBase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class C03_ExtentReports extends TestBase {
-    //    HATIRLAMAMIZ GEREKEN 3 CLASS
+public class C01_ExtentRaports2 extends TestBase {
     protected static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
     protected static ExtentTest extentTest;
-    @Test
-    public void extentReportsTest(){
+    @BeforeClass
+    public static void extentRaportsSetup() throws Exception {
         //      REPORT  PATH
         String currentTime = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         String path = System.getProperty("user.dir")+"/test-output/reports/"+currentTime+"html_report.html";
@@ -39,7 +38,6 @@ public class C03_ExtentReports extends TestBase {
         extentHtmlReporter.config().setReportName("Regression Test Sonucu");
 
         //********************RAPOR AYARI BITTI***************
-
         // RAporu Projeme Ekliyorum
 
         extentReports.attachReporter(extentHtmlReporter);
@@ -48,15 +46,24 @@ public class C03_ExtentReports extends TestBase {
 
         // TUM AYARLAR BITTI. EXTENT TEST OBJESI ILE LOGLAMA (RAPORA YAZDIRMA) ISLEMINI YAPABILIRIM
 
-        extentTest.pass("Kullanici Anasayfaya gider");
-        driver.get("https://www.techproeducation.com");
 
-        //        LMS SAYFASINA GIDELIM
-        extentTest.pass("Kullanici LMS sayfasina gider");
-        driver.findElement(By.linkText("LMS LOGIN")).click();
-//        TEST BITTI
-        extentTest.pass("TEST BASARIYLA GERCEKLESDI");
-//        RAPORU GOSTER. RAPORUN OLUSMASI ICIN BU ADIM ZORUNLUDUR
-        extentReports.flush();
+
+    }
+
+    @Test
+    public void extentRaportsTest() {
+        extentTest.pass("PASS");
+        extentTest.info("BILGILENDIRME NOTU");
+        extentTest.fail("FAILED");
+        extentTest.warning("UYARRI MESAJI");
+        extentTest.skip("ATLAMA MESAJI");
+        extentTest.fatal("COKUS HATASI");
+
+    }
+
+    @AfterClass
+    public static void extentRaportsTearDown() throws Exception {
+        extentReports.flush();// raporu bitir anlaminda
+
     }
 }
