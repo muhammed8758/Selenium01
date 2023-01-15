@@ -67,4 +67,15 @@ public class C02_WebTables extends TestBase {
         //  sutun5Test.stream().forEach(t-> System.out.println(t.getText()));
 
     }
+    public  void printData(int row, int column) {// tablodan deger alma methodu
+        driver.get("https://the-internet.herokuapp.com/tables ");
+        List<WebElement> columnFiveElements = driver.
+                findElements(By.xpath("//table[@id='table1']//tbody//tr[" + row + "]//td[" + column + "]"));
+        columnFiveElements.stream().forEach(t -> System.out.println(t.getText()));
+    }
+
+    @Test
+    public void testMethod() {
+        printData(2,3);
+    }
 }
