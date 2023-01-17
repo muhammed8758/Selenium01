@@ -11,8 +11,7 @@ public class C02_WebTables extends TestBase {
 
 
 //        Create a class: WebTables
-
-    //        Task 2 : 3. Row’ datalarını print edin
+//        Task 2 : 3. Row’ datalarını print edin
 //        Task 3 : Son row daki dataları print edin
 //        Task 4 : 5. Column datalarini print edin
 

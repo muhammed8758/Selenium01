@@ -21,17 +21,5 @@ Isaretlediginiz cinsiyetin secili, diger cinsiyet kutusunun secili olmadigini te
 Sayfayi kapatin
 Collapse
 
-
-
-
-
-
-
-
-
-
-
-
-
      */
 }

@@ -22,14 +22,16 @@ public class C01_Screenshot1 extends TestBase {
 //        Techpro education a git ve Sayfanin goruntusunu al
         driver.get("https://www.techproeducation.com");
         waitFor(1);
-//        1. Ekran goruntusunu getScreenshotAs metotu ile alip File olarak olusturalim
+//        1. Ekran goruntusunu getScreenshotAs method ile alip File olarak olusturalim
         File goruntu = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
 //        2. Almis oldugum ekran goruntusunu belirledigim bir PATH e kaydet.dir= directory=dosya
 //        NOTE: kayit ismini dinamik yapmak icin date objesi kullandim
         String currentDate = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         String path = System.getProperty("user.dir")+"/test-output/EkranGoruntuleri/"+currentDate+"image.png";
 //        String path = System.getProperty("user.dir")+"\\test-output\\EkranGoruntuleri\\image.png";//CALISMIYORSA WINDOW ICIN
         File hedef = new File(path);
+        
 //        3. Goruntum ile dosyami birlestirip kaydet
         FileUtils.copyFile(goruntu,hedef);
 //        ALTERNATIF OLARAK TUM BU ADIMLARI TEK SEFERDE DEGISKEN KULLANMADAN YAPABILIRIM
