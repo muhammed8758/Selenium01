@@ -18,9 +18,9 @@ public class P21_ScreenShot extends TestBase {
         //Amazon sayfasına gidelim
         driver.get("https://amazon.com");
         //Tüm sayfanın resmini alalım
-        String tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
+        String date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
-        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
+        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+date+".jpeg"));
         /*
         FILEUTILS CLASS'I, FİLE NESNELERİ İLE BİRLİKTE KULLANABİLECEĞİMİZ METHODLAR İÇERİR.
         BU METHODLARI KULLANARAK DOSYALARDA OKUMA, YAZMA VE KOPYALAMA İŞLEMLERİNİ ÇOK DAHA KOLAY YAPABİLİRİZ
@@ -29,9 +29,16 @@ public class P21_ScreenShot extends TestBase {
         Thread.sleep(6000);
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://techproeducation.com");
-        tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
-        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
+        date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
+        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+date+".jpeg"));
         //Tekrar amazon sayfasına dönüp iphone aratalım
+
+        driver.navigate().back();
+        Thread.sleep(3000);
+        date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
+        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+date+".jpeg"));
+
         //Arama sonucunun resmini alalım
+
     }
 }
