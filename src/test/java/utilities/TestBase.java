@@ -1,4 +1,7 @@
 package utilities;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -26,21 +29,37 @@ public abstract class TestBase {
 //    Sebepi child classlarda gorulebilir olmasi
     protected static WebDriver driver;
 
-    //    setUp
+    /*
+   1- <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports --> pom.xml'e yüklemek
+   2- Eğer extentReport almak istersek ilk yapmamız gereken ExtentReport class'ından bir obje oluşturmak
+   3- HTLM formatında düzenleneceği için ExtentHtmlReporter class'ından obje oluşturmak
+    */
+    protected ExtentReports extentReports;//Raporlamayı başlatırız
+    protected ExtentHtmlReporter extentHtmlReporter;//Raporumu HTLM formatında düzenler
+    protected ExtentTest extentTest; //Test aşamalarına extentTest objesi ile bilgi ekleriz
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-//        driver=WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        //----------------------------------------------------------------
+        extentReports = new ExtentReports();
+        String tarih = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "target/ExtentReports/htmlreport"+tarih+".html";
+        extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
+        extentReports.attachReporter(extentHtmlReporter);
+        //Raporda gözükmesini istediğimiz bilgiler için
+        extentReports.setSystemInfo("Browser","Chrome");
+        extentReports.setSystemInfo("Tester","Muhammed");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName("Test Sonucu");
+        extentTest=extentReports.createTest("Extent Tests","Test Raporu");
     }
-
-    //    tearDown
     @After
     public void tearDown() {
-        waitFor(5);
-        driver.quit();
+        //driver.quit();
+        extentReports.flush();
     }
 
     //    MULTIPLE WINDOW:
@@ -263,4 +282,20 @@ public abstract class TestBase {
         js.executeScript("arguments[0].setAttribute('value','" + metin + "')", element);
 
     }
+    //    input elementindeki degerleri(value) al
+//   Belirli bir WebElement'in id değerini String olarak alır ve value attribute değerini String olarak döndürür
+//    return
+//    document HTML'E GIT
+//    .getElementById('" + idOfElement + "') ID'si VERILEN ELEMENTI BUL
+//    .value")
+//    .toString();
+
+   public void getValueByJS(String idOfElement){
+       JavascriptExecutor js = (JavascriptExecutor)driver;
+       String metin = js.executeScript("return document.getElementById('"+idOfElement+"').value").toString();
+       System.out.println("Kutudaki deger : "+metin);
+   }
+
+
+
 }

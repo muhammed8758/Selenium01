@@ -3,9 +3,7 @@ package practice;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WindowType;
+import org.openqa.selenium.*;
 import utilities.TestBase;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +15,7 @@ public class P21_ScreenShot extends TestBase {
     public void name() throws IOException, InterruptedException {
         //Amazon sayfasına gidelim
         driver.get("https://amazon.com");
+        String amazonSayfasi = driver.getWindowHandle();
         //Tüm sayfanın resmini alalım
         String date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         TakesScreenshot ts = (TakesScreenshot) driver;
@@ -31,14 +30,15 @@ public class P21_ScreenShot extends TestBase {
         driver.get("https://techproeducation.com");
         date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+date+".jpeg"));
+
+
         //Tekrar amazon sayfasına dönüp iphone aratalım
-
-        driver.navigate().back();
-        Thread.sleep(3000);
-        date = new SimpleDateFormat("hh_mm_ss_ddMMyyyy").format(new Date());
-        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+date+".jpeg"));
-
+        driver.switchTo().window(amazonSayfasi);
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("iphone", Keys.ENTER);
         //Arama sonucunun resmini alalım
-
+        WebElement sonuc = driver.findElement(By.xpath("(//*[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
+        FileUtils.copyFile(sonuc.getScreenshotAs(OutputType.FILE),new File("target/WebElementScreenShot/WEScreenShot"+date+".jpeg"));
+        //sonuc elementini locate edip webelmente assine edin
+        //FileUtils.copyFile(WE.getScreenshotAs(OutputType.FILE),new File("target/tumSayfaResmi/tumSayfa"+tarih+".jpeg"));
     }
 }
